@@ -1,4 +1,4 @@
-                                      # PhoneBook Small Project
+# PhoneBook Small Project
 
 # Define Menu Function of PhoneBook
 def PhoneMenu():
@@ -10,27 +10,28 @@ def PhoneMenu():
     print("3. Update Contact Number")
     print("4. Delete Contact Number")
     print("5. Exit The Program")
-    print(f"\n={'='*20}")
+    print(f"\n={'=' * 20}")
     
 
 # Initializing Empty dictionary to store contact name and number
 PhoneBook = {}   
 
 
-
 # 1. Add Contact Number
 def AddNumber():
-    contact_name = input("Enter the Name of the Person: ")   #initializing Variable and taking input
+    contact_name = input("Enter the Name of the Person: ").strip()   # initializing Variable and taking input
+    if not contact_name:  # Check if the input is empty
+        print("Name cannot be empty. Please try again.")
+        return
     if contact_name in PhoneBook:
-        print(f"{contact_name} already exists in the list.")  #Use of F-String Here
+        print(f"{contact_name} already exists in the list.")  # Use of F-String Here
     else:
-        contact_number = input(f"Please enter the contact number for {contact_name}: ")
-        if contact_number.isdigit() and len(contact_number) == 11:   #Applying Validation On Contact Number
-            PhoneBook[contact_name] = contact_number        #Assigning Contact Number
+        contact_number = input(f"Please enter the contact number for {contact_name}: ").strip()
+        if contact_number.isdigit() and len(contact_number) == 11:   # Applying Validation On Contact Number
+            PhoneBook[contact_name] = contact_number        # Assigning Contact Number
             print(f"{contact_name} has been added to the contact list.")
         else:
             print("Please enter a valid contact number (length should be 11 digits).")
-
 
 
 # 2. View All Contact Numbers
@@ -45,14 +46,16 @@ def ViewNumber():
         print(f"={'='*20}")
 
 
-
 # 3. Update Contact Number
 def UpdateNumber():
-    contact_name = input("Enter the Name to update the Number: ")
+    contact_name = input("Enter the Name to update the Number: ").strip()
+    if not contact_name:  # Check if the name input is empty
+        print("Name cannot be empty. Please try again.")
+        return
     if contact_name not in PhoneBook:
         print(f"{contact_name} does not exist in the list.")
     else:
-        update_number = input(f"Enter the new number to update for {contact_name}: ")
+        update_number = input(f"Enter the new number to update for {contact_name}: ").strip()
         if update_number.isdigit() and len(update_number) == 11:
             PhoneBook[contact_name] = update_number
             print(f"Your number has been updated to {update_number} for {contact_name}.")
@@ -60,10 +63,12 @@ def UpdateNumber():
             print("Invalid Number. It should be 11 digits.")
 
 
-
 # 4. Delete Number
 def DeleteNumber():
-    contact_name = input("Enter the Name to Delete the Number: ")
+    contact_name = input("Enter the Name to Delete the Number: ").strip()
+    if not contact_name:  # Check if the name input is empty
+        print("Name cannot be empty. Please try again.")
+        return
     if contact_name not in PhoneBook:
         print(f"{contact_name} does not exist in the list.")
     else:
@@ -72,8 +77,7 @@ def DeleteNumber():
 
 
 
-        
-#Main Function
+# Main Function
 def main():
     while True:
         PhoneMenu()
@@ -97,11 +101,5 @@ def main():
             print("Invalid input! Please enter a valid number.")
 
 
-
 # Run the program
 main()
-        
-
-
-
-            
