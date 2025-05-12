@@ -24,6 +24,8 @@ A simple command-line based PhoneBook application built using Python.
 ## 📂 Project Structure
 PhoneBook-Project/
 │
+
 ├── PhoneBook.py # Main script for PhoneBook functionality
+
 ├── README.md # Project documentation
 
